@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Food With Friends</string>
+    <string name="action_settings">Settings</string>
+    <string name="createUserHint">Please Enter Username Here</string>
+    <string name="createPassowrdHint">Please Enter Password Here</string>
+    <string name="createUserButton">Create New User</string>
+    <string name="createEmail">Please Enter Email Here</string>
+
+</resources>
