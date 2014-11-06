@@ -7,5 +7,7 @@
     <string name="createPassowrdHint">Please Enter Password Here</string>
     <string name="createUserButton">Create New User</string>
     <string name="createEmail">Please Enter Email Here</string>
+    <string name="searchHint">Search For Recipe</string>
+    <string name="searchButton">Search</string>
 
 </resources>

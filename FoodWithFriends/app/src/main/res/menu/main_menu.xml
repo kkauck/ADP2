@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity" >
+
+    <item android:id="@+id/action_home"
+        android:title="Home"
+        android:orderInCategory="100"
+        android:showAsAction="always|withText"
+        android:icon="@drawable/ic_action_action_home"
+
+        />
+
+    <item android:id="@+id/action_create"
+        android:title="Create Recipe"
+        android:orderInCategory="100"
+        android:showAsAction="always|withText"
+        android:icon="@drawable/ic_action_action_note_add"
+
+        />
+
+    <item android:id="@+id/action_grocery"
+        android:title="Grocery List"
+        android:orderInCategory="100"
+        android:showAsAction="always|withText"
+        android:icon="@drawable/ic_action_action_list"
+
+        />
+
+</menu>
