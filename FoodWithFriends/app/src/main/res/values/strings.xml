@@ -9,5 +9,12 @@
     <string name="createEmail">Please Enter Email Here</string>
     <string name="searchHint">Search For Recipe</string>
     <string name="searchButton">Search</string>
+    <string name="recipeName">Recipe Name</string>
+    <string name="recipeType">Type Of Recipe (Ex. Dinner)</string>
+    <string name="recipeTime">Prep &amp; Cook Time</string>
+    <string name="recipeIngredients">Enter All Ingredients Here</string>
+    <string name="recipeInstructions">Cooking Instructions Here</string>
+    <string name="saveNewRecipe">Save Your Recipe</string>
+    <string name="takePicture">Take Picture Of Your Recipe</string>
 
 </resources>
