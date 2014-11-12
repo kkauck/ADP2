@@ -96,6 +96,13 @@ public class CreateRecipe extends Fragment {
             @Override
             public void onClick(View v) {
 
+                String name, time, type, ingredients, instructions;
+                name  = mRecipeName.getText().toString();
+                time = mRecipeTime.getText().toString();
+                type = mRecipeType.getText().toString();
+                ingredients = mRecipeIngredients.getText().toString();
+                instructions = mRecipeInstructions.getText().toString();
+
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 mImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 ParseFile imageFile = new ParseFile("RecipeImage.jpg", stream.toByteArray());
@@ -104,9 +111,21 @@ public class CreateRecipe extends Fragment {
 
                 ParseObject recipe = new ParseObject("Recipe");
 
+                recipe.put("recipeName", name);
+                recipe.put("recipeTime", time);
+                recipe.put("recipeType", type);
+                recipe.put("recipeIngredients", ingredients);
+                recipe.put("recipeInstructions", instructions);
                 recipe.put("recipeImage", imageFile);
 
                 recipe.saveInBackground();
+
+                mRecipeIngredients.setText("");
+                mRecipeType.setText("");
+                mRecipeTime.setText("");
+                mRecipeInstructions.setText("");
+                mRecipeName.setText("");
+                mRecipeImage.setImageResource(android.R.color.transparent);
 
             }
 
