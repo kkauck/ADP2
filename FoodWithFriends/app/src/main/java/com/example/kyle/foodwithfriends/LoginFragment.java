@@ -62,6 +62,7 @@ public class LoginFragment extends Fragment {
                             Toast.makeText(getActivity(), "You Have Successfully Logged In", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getActivity(), MainActivity.class);
                             startActivity(intent);
+                            getActivity().finish();
 
                         } else {
 

@@ -3,19 +3,17 @@
 package com.example.kyle.foodwithfriends.Helpers;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kyle.foodwithfriends.R;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseImageView;
 
 import java.util.ArrayList;
 
@@ -64,25 +62,24 @@ public class RecipeAdapter extends BaseAdapter {
 
         DataHelper helper = (DataHelper) getItem(position);
 
-        final ImageView recipeImage = (ImageView) convertView.findViewById(R.id.listImage);
+        ParseImageView recipeImage = (ParseImageView) convertView.findViewById(R.id.listImage);
+        ParseFile image = helper.getFile();
 
-        ParseFile file = helper.getFile();
+        if (image != null){
 
-        file.getDataInBackground(new GetDataCallback() {
+            recipeImage.setParseFile(image);
+            recipeImage.loadInBackground(new GetDataCallback() {
 
-            @Override
-            public void done(byte[] bytes, ParseException e) {
+                @Override
+                public void done(byte[] bytes, ParseException e) {
 
-                if (e == null){
 
-                    Bitmap image = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    recipeImage.setImageBitmap(image);
 
                 }
 
-            }
+            });
 
-        });
+        }
 
         TextView name = (TextView) convertView.findViewById(R.id.listName);
         TextView time = (TextView) convertView.findViewById(R.id.listTime);

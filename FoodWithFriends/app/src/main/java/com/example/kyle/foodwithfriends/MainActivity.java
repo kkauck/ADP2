@@ -72,44 +72,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
-    }
-
-
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
-
-        getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-
-        MainFragment frag = new MainFragment();
-        getFragmentManager().beginTransaction().replace(R.id.main_container, frag).commit();
+        mNewPage.getAdapter().notifyDataSetChanged();
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.action_create) {
-
-            Intent intent = new Intent(this, CreateRecipe.class);
-            startActivity(intent);
-
-        }
-
-        return super.onOptionsItemSelected(item);
-
-    }*/
 }

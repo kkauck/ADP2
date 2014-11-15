@@ -2,12 +2,12 @@ package com.example.kyle.foodwithfriends.Helpers;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.kyle.foodwithfriends.CreateRecipe;
 import com.example.kyle.foodwithfriends.MainFragment;
 
-public class TabAdapter extends FragmentPagerAdapter {
+public class TabAdapter extends FragmentStatePagerAdapter {
 
     public TabAdapter(FragmentManager fm) {
 
@@ -40,6 +40,13 @@ public class TabAdapter extends FragmentPagerAdapter {
     public int getCount() {
 
         return 3;
+
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+
+        return POSITION_NONE;
 
     }
 }

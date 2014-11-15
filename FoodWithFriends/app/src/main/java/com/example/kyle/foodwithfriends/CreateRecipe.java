@@ -38,6 +38,7 @@ public class CreateRecipe extends Fragment {
     TextView mRecipeType;
     TextView mRecipeIngredients;
     TextView mRecipeInstructions;
+    String imageName;
 
     public CreateRecipe(){
 
@@ -103,9 +104,10 @@ public class CreateRecipe extends Fragment {
                 ingredients = mRecipeIngredients.getText().toString();
                 instructions = mRecipeInstructions.getText().toString();
 
+                Bitmap scaleImage = Bitmap.createScaledBitmap(mImage, 150, 150 * mImage.getHeight() / mImage.getWidth(), false);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                mImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                ParseFile imageFile = new ParseFile("RecipeImage.jpg", stream.toByteArray());
+                scaleImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                ParseFile imageFile = new ParseFile(imageName+".jpg", stream.toByteArray());
 
                 imageFile.saveInBackground();
 
@@ -135,7 +137,7 @@ public class CreateRecipe extends Fragment {
 
     private Uri getOutUri() {
 
-        String imageName = new SimpleDateFormat("MMddyyyy HHmmss").format(new Date(System.currentTimeMillis()));
+        imageName = new SimpleDateFormat("MMddyyyy HHmmss").format(new Date(System.currentTimeMillis()));
         File imageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File recipeDirectory = new File(imageDirectory, "Recipe Photos");
         recipeDirectory.mkdirs();
@@ -175,6 +177,7 @@ public class CreateRecipe extends Fragment {
                 e.printStackTrace();
 
             }
+
             addImage(mImageUri);
 
         } else {
@@ -192,40 +195,5 @@ public class CreateRecipe extends Fragment {
         getActivity().sendBroadcast(picIntent);
 
     }
-
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_recipe_main);
-
-        getActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.action_home) {
-
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-
-        }
-
-        return super.onOptionsItemSelected(item);
-
-    }*/
 
 }

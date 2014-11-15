@@ -5,7 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kyle.foodwithfriends.Helpers.DataHelper;
 import com.example.kyle.foodwithfriends.Helpers.RecipeAdapter;
@@ -20,7 +23,7 @@ import java.util.List;
 
 public class MainFragment extends android.support.v4.app.Fragment {
 
-    public MainFragment(){
+    public MainFragment() {
 
 
     }
@@ -28,6 +31,8 @@ public class MainFragment extends android.support.v4.app.Fragment {
     private ArrayList<DataHelper> mRecipeDetails = new ArrayList<DataHelper>();
     DataHelper mDataHelper;
     private ListView mReciepList;
+    TextView mSearchTerm;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,8 +46,12 @@ public class MainFragment extends android.support.v4.app.Fragment {
 
         super.onActivityCreated(savedInstanceState);
 
-        View view = getView();
+        mRecipeDetails.clear();
+
+        view = getView();
         assert view != null;
+
+        mSearchTerm = (TextView) view.findViewById(R.id.mainSearch);
 
         final ParseQuery<ParseObject> recipes = ParseQuery.getQuery("Recipe");
         recipes.findInBackground(new FindCallback<ParseObject>() {
@@ -50,7 +59,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
             @Override
             public void done(List<ParseObject> parseObjects, ParseException e) {
 
-                if (e == null){
+                if (e == null) {
 
                     for (int i = 0; i < parseObjects.size(); i++) {
 
@@ -69,16 +78,72 @@ public class MainFragment extends android.support.v4.app.Fragment {
 
                 } else {
 
-                    //something went very wrong
+                    Toast.makeText(getActivity(), "There were no saved recipes to display", Toast.LENGTH_SHORT).show();
 
                 }
+
+                mReciepList = (ListView) view.findViewById(R.id.recipeList);
+                mReciepList.setAdapter(new RecipeAdapter(getActivity(), mRecipeDetails));
 
             }
 
         });
 
-        mReciepList = (ListView) view.findViewById(R.id.recipeList);
-        mReciepList.setAdapter(new RecipeAdapter(getActivity(), mRecipeDetails));
+        final Button searchButton = (Button) view.findViewById(R.id.searchButton);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                mReciepList.setAdapter(null);
+
+                String search = mSearchTerm.getText().toString();
+
+                mRecipeDetails.clear();
+
+                ParseQuery<ParseObject> searchRecipe = ParseQuery.getQuery("Recipe");
+                searchRecipe.whereContains("recipeType", search);
+                searchRecipe.findInBackground(new FindCallback<ParseObject>() {
+
+                    @Override
+                    public void done(List<ParseObject> parseObjects, ParseException e) {
+
+                        if (e == null) {
+
+                            for (int i = 0; i < parseObjects.size(); i++) {
+
+                                String name = parseObjects.get(i).getString("recipeName");
+                                String type = parseObjects.get(i).getString("recipeType");
+                                String time = parseObjects.get(i).getString("recipeTime");
+                                String ingredients = parseObjects.get(i).getString("recipeIngredients");
+                                String instructions = parseObjects.get(i).getString("recipeInstructions");
+                                ParseFile file = parseObjects.get(i).getParseFile("recipeImage");
+
+                                mRecipeDetails.add(new DataHelper(name, time, type, ingredients, instructions, file));
+
+                            }
+
+                            Log.i("Hello", "Goodbye");
+
+                            mReciepList = (ListView) view.findViewById(R.id.recipeList);
+                            mReciepList.setAdapter(new RecipeAdapter(getActivity(), mRecipeDetails));
+
+                        } else {
+
+                            Toast.makeText(getActivity(), "There were no saved recipes to display", Toast.LENGTH_SHORT).show();
+                            Log.i("Hello", "Goodbye");
+
+                        }
+
+                    }
+
+                });
+
+            }
+
+        });
 
     }
+
 }
+
