@@ -4,7 +4,9 @@ package com.example.kyle.foodwithfriends.Helpers;
 
 import com.parse.ParseFile;
 
-public class DataHelper {
+import java.io.Serializable;
+
+public class DataHelper implements Serializable {
 
     private String mName;
     private String mTime;

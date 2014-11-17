@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.kyle.foodwithfriends.CreateRecipe;
+import com.example.kyle.foodwithfriends.GroceryList;
 import com.example.kyle.foodwithfriends.MainFragment;
 
 public class TabAdapter extends FragmentStatePagerAdapter {
@@ -28,7 +29,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
 
         } else if (i == 2){
 
-            return new CreateRecipe();
+            return new GroceryList();
 
         }
 

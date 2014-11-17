@@ -27,6 +27,7 @@
         <activity android:name=".CreateLoginMain" />
         <activity android:name=".ResetPasswordMain" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".DetailActivity" />
 
     </application>
 

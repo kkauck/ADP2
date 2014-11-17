@@ -86,8 +86,8 @@ public class RecipeAdapter extends BaseAdapter {
         TextView type = (TextView) convertView.findViewById(R.id.listType);
 
         name.setText(helper.getName());
-        time.setText(helper.getTime());
-        type.setText(helper.getType());
+        time.setText("Cooking Time: " + helper.getTime());
+        type.setText("Recipe Type: " + helper.getType());
 
         return convertView;
 

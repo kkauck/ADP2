@@ -1,10 +1,12 @@
 package com.example.kyle.foodwithfriends;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
     DataHelper mDataHelper;
     private ListView mReciepList;
     TextView mSearchTerm;
+    byte[] mRecipeData;
     View view;
 
     @Override
@@ -52,6 +55,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
         assert view != null;
 
         mSearchTerm = (TextView) view.findViewById(R.id.mainSearch);
+        mReciepList = (ListView) view.findViewById(R.id.recipeList);
 
         final ParseQuery<ParseObject> recipes = ParseQuery.getQuery("Recipe");
         recipes.findInBackground(new FindCallback<ParseObject>() {
@@ -141,6 +145,39 @@ public class MainFragment extends android.support.v4.app.Fragment {
 
             }
 
+        });
+
+        mReciepList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent detailView = new Intent(getActivity(), DetailActivity.class);
+
+                mDataHelper = mRecipeDetails.get(position);
+
+                ParseFile recipeImage = mDataHelper.getFile();
+
+                try {
+
+                    mRecipeData = recipeImage.getData();
+
+                } catch (ParseException e) {
+
+                    e.printStackTrace();
+                }
+
+                //detailView.putExtra(DetailActivity.EXTRA_ITEM, mDataHelper);
+                detailView.putExtra(DetailActivity.RECIPE_NAME, mDataHelper.getName());
+                detailView.putExtra(DetailActivity.RECIPE_TIME, mDataHelper.getTime());
+                detailView.putExtra(DetailActivity.RECIPE_TYPE, mDataHelper.getType());
+                detailView.putExtra(DetailActivity.RECIPE_INGREDIENTS, mDataHelper.getIngredients());
+                detailView.putExtra(DetailActivity.RECIPE_INSTRUCTIONS, mDataHelper.getInstructions());
+                detailView.putExtra(DetailActivity.RECIPE_IMAGE, mRecipeData);
+
+                startActivity(detailView);
+
+            }
         });
 
     }
