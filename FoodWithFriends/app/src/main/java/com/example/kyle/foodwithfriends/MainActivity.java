@@ -1,10 +1,15 @@
+//Kyle Kauck
+
 package com.example.kyle.foodwithfriends;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
 
 import com.example.kyle.foodwithfriends.Helpers.TabAdapter;
 
@@ -73,6 +78,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
         mNewPage.getAdapter().notifyDataSetChanged();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#571B7E")));
+
+        return true;
 
     }
 

@@ -3,13 +3,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/cream">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="10dp"
+        android:background="@color/cream">
 
         <ImageView
             android:layout_width="125dp"
@@ -29,7 +31,9 @@
             android:layout_toRightOf="@+id/detailImage"
             android:layout_toEndOf="@+id/detailImage"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,7 +65,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="5dp"
+        android:background="@color/cream">
 
         <TextView
             android:layout_width="wrap_content"
@@ -82,7 +87,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:lines="8"
+            android:lines="6"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
@@ -94,7 +99,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:background="@color/cream">
 
         <TextView
             android:layout_width="wrap_content"
@@ -116,9 +122,22 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="5dp"
-            android:lines="8"
+            android:lines="6"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Grocery List"
+        android:id="@+id/goToGroceries"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/purple"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp" />
 
 </LinearLayout>

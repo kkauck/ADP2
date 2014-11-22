@@ -1,3 +1,5 @@
+//Kyle Kauck
+
 package com.example.kyle.foodwithfriends;
 
 import android.app.Fragment;
@@ -43,6 +45,8 @@ public class CreateLoginFragment extends Fragment {
         mUserPass = (TextView) view.findViewById(R.id.createPassword);
         mUserEmail = (TextView) view.findViewById(R.id.createEmail);
 
+
+        //Upon clicking the create button user information will be taken and saved into Parse.
         mCreateUser = (Button) view.findViewById(R.id.createButton);
         mCreateUser.setOnClickListener(new View.OnClickListener() {
 

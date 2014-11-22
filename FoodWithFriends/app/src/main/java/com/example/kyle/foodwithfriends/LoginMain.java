@@ -1,6 +1,10 @@
+//Kyle Kauck
+
 package com.example.kyle.foodwithfriends;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +26,9 @@ public class LoginMain extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.login_main, menu);
+
+        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#571B7E")));
+
         return true;
     }
 

@@ -1,3 +1,5 @@
+//Kyle Kauck
+
 package com.example.kyle.foodwithfriends.Helpers;
 
 import android.support.v4.app.Fragment;

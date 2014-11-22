@@ -8,16 +8,16 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 
-public class ResetPasswordMain extends Activity {
+public class CreateGroceryList extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reset_main);
+        setContentView(R.layout.create_grocery);
 
-        ResetPasswordFragment frag = new ResetPasswordFragment();
-        getFragmentManager().beginTransaction().replace(R.id.forgot_container, frag).commit();
+        CreateGroceryListFrag frag = new CreateGroceryListFrag();
+        getFragmentManager().beginTransaction().replace(R.id.create_grocery_container, frag).commit();
 
     }
 
@@ -29,5 +29,4 @@ public class ResetPasswordMain extends Activity {
         return true;
 
     }
-
 }

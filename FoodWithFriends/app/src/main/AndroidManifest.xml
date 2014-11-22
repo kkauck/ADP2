@@ -13,7 +13,8 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:icon="@drawable/ic_action_av_my_library_books">
         <activity
             android:name=".LoginMain"
             android:label="@string/app_name" >
@@ -28,6 +29,7 @@
         <activity android:name=".ResetPasswordMain" />
         <activity android:name=".MainActivity" />
         <activity android:name=".DetailActivity" />
+        <activity android:name=".CreateGroceryList" />
 
     </application>
 

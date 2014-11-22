@@ -1,3 +1,5 @@
+//Kyle Kauck
+
 package com.example.kyle.foodwithfriends;
 
 import android.content.Intent;
@@ -57,6 +59,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
         mSearchTerm = (TextView) view.findViewById(R.id.mainSearch);
         mReciepList = (ListView) view.findViewById(R.id.recipeList);
 
+        //Loads in the information from parse and uses a data helper class to add everything to an array that is then used to create a list view
         final ParseQuery<ParseObject> recipes = ParseQuery.getQuery("Recipe");
         recipes.findInBackground(new FindCallback<ParseObject>() {
 
@@ -93,6 +96,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
 
         });
 
+        //Uses the entered search term by the user to find the correct recipes and then display them in a list to the user
         final Button searchButton = (Button) view.findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
 
@@ -147,6 +151,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
 
         });
 
+        //Upon click an item the user will be taken to a detail view that will display the correct information to the user.
         mReciepList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

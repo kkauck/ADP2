@@ -1,3 +1,5 @@
+//Kyle Kauck
+
 package com.example.kyle.foodwithfriends;
 
 import android.app.Fragment;
@@ -41,6 +43,7 @@ public class LoginFragment extends Fragment {
         mUserName = (TextView) view.findViewById(R.id.loginUsername);
         mUserPass = (TextView) view.findViewById(R.id.loginPassword);
 
+        //Will get the user information and check to make sure that the information is correct, if successful the user is logged into the app if not they are presented with a toast.
         Parse.initialize(getActivity(), "Z2WrL4pGyKpldqzfqawk78CTKQ6sFZf1jhKh2jne", "YDCbfu7O5TPiBIbKrnjhXGbIlJ0iW2YFDEd83xal");
 
         mLoginUser = (Button) view.findViewById(R.id.loginButton);

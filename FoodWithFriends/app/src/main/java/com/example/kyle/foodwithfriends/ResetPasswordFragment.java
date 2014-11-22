@@ -1,3 +1,5 @@
+//Kyle Kauck
+
 package com.example.kyle.foodwithfriends;
 
 import android.app.Fragment;
@@ -38,6 +40,7 @@ public class ResetPasswordFragment extends Fragment {
 
         mUserEmail = (TextView) view.findViewById(R.id.resetEmail);
 
+        //Upon clicking the button the user will have an email sent to them if the email is registered with Parse so that they can reset their forgotten password
         mResetPassword = (Button) view.findViewById(R.id.resetPassword);
         mResetPassword.setOnClickListener(new View.OnClickListener() {
 

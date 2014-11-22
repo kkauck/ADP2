@@ -1,8 +1,13 @@
+//Kyle Kauck
+
 package com.example.kyle.foodwithfriends;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 
 public class DetailActivity extends Activity {
 
@@ -19,6 +24,7 @@ public class DetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_main);
 
+        //This will get all the passed in information from the list.
         if (savedInstanceState == null){
 
             DetailFragment frag = new DetailFragment();
@@ -34,6 +40,15 @@ public class DetailActivity extends Activity {
             DetailFragment.mRecipeImage = intent.getByteArrayExtra(RECIPE_IMAGE);
 
         }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#571B7E")));
+
+        return true;
 
     }
 

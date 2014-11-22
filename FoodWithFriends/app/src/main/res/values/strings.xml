@@ -17,4 +17,7 @@
     <string name="saveNewRecipe">Save Your Recipe</string>
     <string name="takePicture">Take Picture Of Your Recipe</string>
 
+    <color name="purple">#571B7E</color>
+    <color name="cream">#F5F5DC</color>
+
 </resources>
